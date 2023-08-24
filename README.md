@@ -1,22 +1,22 @@
-### WebDriverIO TypeScript Web UI Automation Demo
+# WebDriverIO TypeScript Web UI Automation Demo
 
 This repository contains a collection of sample webdriverIO (v8) projects and libraries that demonstrate how to use the tool and develop automation script using the Mochajs BDD framework. It uses the `chromedriver` NPM package that wraps the ChromeDriver for you. This service does not require a Selenium server, but uses ChromeDriver to communicate with the browser directly.
 
 This boilerplate code support Typescript, also provides sample utilities to read data from MS-Excel, executes SQL statements to any database (RDBMS such as Oracle, TeraData, MySQL, Vertica) for end to end testing. It generate Allure, JSON, Junit/Xunit, Spec reporters as well. `Please note that at the time of writing (January 2023) the wdio reporting module of JSON, Junit/Xunit are not fully compatible with V8 hence it is disabled from this boilerplate code.`
 
 
-### Installation
+## Installation
 This project is tested on **Node v18.0.0** and above.  While earlier versions of node may be compatible, but they have not been verified.
 
 `Node.JS:` Install  from the site - https://nodejs.org/en/  take the LTS version based on your Operating system. Please make sure you install NodeJS globally.
 
 `JDK:` It is optional, install JDK and make sure class path is set properly. JAVA is require to start `Selenium Server` on your local environment nothing else.
 
-### Selenium Tests / Appium Tests
+## Selenium Tests / Appium Tests
 
 To run your test you must have Selenium / Appium server up and running to execute any webdriverIO tests, or it will fail fast with an error. To start selenium automatically it has been added as part of `services: ['selenium-standalone']` and `services: ['appium']` in the *.conf.ts.  That's all there is to it.!.
 
-### Run Some Sample Tests
+## Run Some Sample Tests
 
 To execute the entire test suite on local development or cloud provider, you can use below
 
@@ -28,23 +28,23 @@ Option 3: Mobile Device. To execute tests on mobile device use : `npm run test-m
 
 💡 Before running mobile tests, perform the requisite Appium setup. Refer [Appium Docs](http://appium.io/getting-started.html?lang=en)
 
-### Config Files
+## Config Files
 
 WebdriverIO uses configuration files to setup and execute tests in specific ways.  The configuration is fully customizable, and different functions can be invoked before, during and after each test or test suite.  Config files are found in the `the root directory of this boilerplate project.`and all ends with `*.conf.ts`.  These can be called via the the cli.
 
-### SauceLabs / BrowserStack / LambdaTest Integration
+## SauceLabs / BrowserStack / LambdaTest Integration
 
 `SauceLabs`, `BrowserStack` and `lambdatest` specific code has been added in the `wdio.sauce.conf.ts`, `wdio.browserstack.conf.ts` and `wdio.lambdatest.conf.ts` under the /test/config folder. You just need to provide your SauceLabs/BrowserStack/LambdaTest credentials in the config file. To run test on SauceLabs, execute command `npm run test-sauce` to run test on BrowserStack `npm run test-browserstack`, to run test on LambdaTest `npm run test-lambdatest`.
 
-### Logs  
+## Logs  
 
 Complete set of execution `logs` will be generated during the run time and can be found in the parent folder location /logs.
 
-### Reporters
+## Reporters
 
 WebdriverIO uses several different types of test reporters to communicate pass/failure.
 
-##### Allure
+### 1. Allure
 
 The Allure Reporter creates [Allure](https://docs.qameta.io/allure/) test reports which is an HTML generated website with all necessary information to debug your test results and take a look on error screenshots. Add allure to the reporters array in config file and define the output directory of the allure reports.  Please note, this has been added in wdio.shared.config.
 
@@ -52,19 +52,15 @@ To generate and view an Allure report inside your corp network or locally, run `
 
 ![ScreenShot](https://user-images.githubusercontent.com/9147189/262856176-33926ee6-b89e-4a38-a68e-ed8f23394ee7.png)
 
-##### Spec
+### 2. Spec
 
 Test reporter, that prints detailed results to console.
 
-### Develop automation scripts (for both desktop browser and mobile browser / app)
+## Develop automation scripts (for both desktop browser and mobile browser / app)
 
-You can write test by using Mocha BDD framework. You can choose TypeScript / JavaScript based design pattern or ES6 based.
+You can write test by using Mocha BDD framework. You can choose TypeScript / JavaScript based design pattern or ES6 based. More about Mocha can be found at  https://mochajs.org/
 
 Refer complete [WebdriverIO v8 API](https://webdriver.io/docs/api) methods to write your automation tests.
-
-#### Using Mocha JavaScript framework
-
-Tests are written in the Mocha framework. More about Mocha can be found at  https://mochajs.org/
 
 Sample tests are located in `*.specs.js` files in the `/test/specs/` directory. A typical test will look similar to this:
 ```
@@ -80,7 +76,7 @@ describe('Performing a search operation on Yahoo Page',  () =>  {
 });
 
 ```
-### The Page Object Design Pattern
+## The Page Object Design Pattern
 
 Within your web app's UI there are areas that your tests interact with. A Page Object simply models these as objects within the test code. This reduces the amount of duplicated code and means that if the UI changes, the fix need only be applied in one place. In other wards one of the challenges of writing test automation is keeping your [selectors] (classes, id's, or xpath's etc.) up to date with the latest version of your code.  The next challenge is to keep the code you write nice and [DRY] (Don't Repeat Yourself).  The page object pattern helps us accomplish this in one solution.  Instead of including our selectors in Spec file (in Mocha), we instead place them in a `<pagename>.ts` file where we can manage all these selectors and methods together. Your test file should only call the test methods.
 
@@ -134,9 +130,8 @@ class LoginPage extends Page {
 export default new LoginPage()
 
 ```
-### Additional Utilities (out of scope of this framework)
 
-### Working with DataBase
+## Working with DataBase
 
 A relational database is, simply, a database that stores related information across multiple tables and allows you to query information in more than one table at the same time. Your application under test displays data from these database. So when you are actually performing automation testing it is very likely that you need to verify the data between actual (which you got it from browser) Vs expected (which you will get it from the database by executing SQL statements on database). This can be done by below statements in your code.
 ```
@@ -166,7 +161,7 @@ Note: `node-any-jdbc` is NOT packaged under this project. If you need, you can i
 
 ```
 
-### Working with MS-Excel
+## Working with MS-Excel
 
 You can user MS-Excel and store your test data, expected data in an excel sheet. Tou can keeep any number of excel sheets you want and use below common methods to puull data from youe sheet to be use as part of testing.  Please note it only support .xlsx file format. For more information refer to the `common-utilities.js` and `util-examples`
 
@@ -193,7 +188,7 @@ utl.excel_getAllSheetData(__dirname+'/sample.xlsx', function(results){
 });
 ```
 
-### Common utilities
+## Common utilities
 
 Refer to the common Javascript functions that provides clean, performant methods for manipulating objects, collections, MS-Excel utilities, DataBase utilities etc. Few sample code can be found in ./util-examples/
 
