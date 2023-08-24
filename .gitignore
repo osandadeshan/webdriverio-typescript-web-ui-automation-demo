@@ -5,4 +5,5 @@ npm-debug.log
 reports/*
 package-lock.json
 allure-report/*
+allure-results/*
 logs/*
