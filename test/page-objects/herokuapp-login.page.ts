@@ -2,7 +2,7 @@ import Page from './page.ts';
 
 class LoginPage extends Page {
   /**
-   * define elements
+   * Define page elements
    */
   get usernameInput() {
     return $('//*[@name="username"]');
@@ -18,14 +18,14 @@ class LoginPage extends Page {
   }
 
   /**
-   * define or overwrite page methods
+   * Define or overwrite page methods
    */
   async open() {
     await super.open('login');
   }
 
   /**
-   * your page specific methods
+   * Page specific methods
    */
   async login(username, password) {
     await this.usernameInput.setValue(username);

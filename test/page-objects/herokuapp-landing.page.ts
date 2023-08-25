@@ -2,21 +2,21 @@ import Page from './page.ts';
 
 class LandingPage extends Page {
   /**
-   * define elements
+   * Define page elements
    */
   get accountMessage() {
     return $('//*[@class="subheader"]');
   }
 
   /**
-   * define or overwrite page methods
+   * Define or overwrite page methods
    */
   async open() {
     await super.open('http://www.phptravels.net/account');
   }
 
   /**
-   * your page specific methods
+   * Page specific methods
    */
   async waitForLandingPageToLoad() {
     if (!(await this.accountMessage.isDisplayed())) {

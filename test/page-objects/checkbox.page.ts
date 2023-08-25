@@ -2,7 +2,7 @@ import Page from './page.ts';
 
 class CheckboxPage extends Page {
   /**
-   * define elements
+   * Define page elements
    */
   get lastCheckbox() {
     return $('#checkboxes input:last-Child');
@@ -12,7 +12,7 @@ class CheckboxPage extends Page {
   }
 
   /**
-   * define or overwrite page methods
+   * Define or overwrite page methods
    */
   async open() {
     return super.open('checkboxes');

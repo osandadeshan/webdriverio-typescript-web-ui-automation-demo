@@ -2,7 +2,7 @@ import Page from './page.ts';
 
 class DynamicPage extends Page {
   /**
-   * define elements
+   * Define page elements
    */
   get btnStart() {
     return $('button=Start');
@@ -12,7 +12,7 @@ class DynamicPage extends Page {
   }
 
   /**
-   * define or overwrite page methods
+   * Define or overwrite page methods
    */
   async open() {
     return super.open('dynamic_loading/2');

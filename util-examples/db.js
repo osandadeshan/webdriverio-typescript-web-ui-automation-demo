@@ -1,10 +1,7 @@
 export const oracle = {
   libpath: __dirname + "/drivers/oracle/ojdbc7.jar",
   drivername: "oracle.jdbc.driver.OracleDriver",
-  url: "jdbc:oracle:thin:QA/password123@//abc-test.corp.int:1527/stage1S",
-  // uri: 'jdbc:oracle:thin://abc-test.corp.int:1527/stage1S',
-  // user: 'QA',
-  // password: 'password123',
+  url: "jdbc:oracle:thin:QA/password123@//abc-test.corp.int:1527/stage1S"
 };
 
 export const mysql = {

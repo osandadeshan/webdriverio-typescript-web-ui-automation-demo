@@ -2,7 +2,7 @@ import Page from './page.ts';
 
 class YahooPage extends Page {
   /**
-   * define elements
+   * Define page elements
    */
   get searchInput() {
     return $("#yschsp");
@@ -15,14 +15,14 @@ class YahooPage extends Page {
   }
 
   /**
-   * define or overwrite page methods
+   * Define or overwrite page methods
    */
   async open() {
     await super.open("https://search.yahoo.com");
   }
 
   /**
-   * your page specific methods
+   * Page specific methods
    */
   async enterText(item: string | number) {
     await this.searchInput.clearValue();

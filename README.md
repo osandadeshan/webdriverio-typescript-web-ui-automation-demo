@@ -34,11 +34,11 @@ WebdriverIO uses configuration files to setup and execute tests in specific ways
 
 ## SauceLabs / BrowserStack / LambdaTest Integration
 
-`SauceLabs`, `BrowserStack` and `lambdatest` specific code has been added in the `wdio.sauce.conf.ts`, `wdio.browserstack.conf.ts` and `wdio.lambdatest.conf.ts` under the /test/config folder. You just need to provide your SauceLabs/BrowserStack/LambdaTest credentials in the config file. To run test on SauceLabs, execute command `npm run test-sauce` to run test on BrowserStack `npm run test-browserstack`, to run test on LambdaTest `npm run test-lambdatest`.
+`SauceLabs`, `BrowserStack` and `lambdatest` specific code has been added in the `wdio.sauce.conf.ts`, `wdio.browserstack.conf.ts` and `wdio.lambdatest.conf.ts` under the `/test/config` folder. You just need to provide your SauceLabs/BrowserStack/LambdaTest credentials in the config file. To run test on SauceLabs, execute command `npm run test-sauce` to run test on BrowserStack `npm run test-browserstack`, to run test on LambdaTest `npm run test-lambdatest`.
 
 ## Logs  
 
-Complete set of execution `logs` will be generated during the run time and can be found in the parent folder location /logs.
+Complete set of execution `logs` will be generated during the run time and can be found in the parent folder location `/logs`.
 
 ## Reporters
 
@@ -63,7 +63,7 @@ You can write test by using Mocha BDD framework. You can choose TypeScript / Jav
 Refer complete [WebdriverIO v8 API](https://webdriver.io/docs/api) methods to write your automation tests.
 
 Sample tests are located in `*.specs.js` files in the `/test/specs/` directory. A typical test will look similar to this:
-```
+```typescript
 //example (pls refer to page object classes and spec files)
 
 //a test using async mode//
@@ -90,37 +90,28 @@ For more information on the implementation of `Page Object Design Pattern`, refe
 
 💡 If you want to use ES5 syntax, refer to the sample.page.js under util-examples.
 
-```
+```typescript
 import Page from './page';
 class LoginPage extends Page {
 
     /**
-    * define elements
+    * Define page elements
     */
-
     get usernameInput()   { return $('//*[@name="username"]'); }
     get passwordInput()   { return $('//*[@name="password"]'); }
     get loginButton()     { return $('//button[contains(., "Login")]'); }
 
     /**
-     * define or overwrite page methods
+     * Define or overwrite page methods
      */
     async open() {
-        await super.open('login')       //this will append `login` to the baseUrl to form complete URL
-        //browser.pause(3000);
+        await super.open('login')
     }
+
     /**
-     * your page specific methods
+     * Page specific methods
      */
-
-    async waitForloginPageToLoad() {
-      if(!(await this.headerImage.isDisplayed())){
-        await this.headerImage.waitForDisplayed(10000);
-      }
-    }
-
     async login(username, password) {
-      //this.waitForloginPageToLoad();
       await this.usernameInput.setValue(username);
       await this.passwordInput.setValue(password);
       await this.loginButton.click();
@@ -134,7 +125,8 @@ export default new LoginPage()
 ## Working with DataBase
 
 A relational database is, simply, a database that stores related information across multiple tables and allows you to query information in more than one table at the same time. Your application under test displays data from these database. So when you are actually performing automation testing it is very likely that you need to verify the data between actual (which you got it from browser) Vs expected (which you will get it from the database by executing SQL statements on database). This can be done by below statements in your code.
-```
+
+```javascript
 //example of connection to Oracle DataBase
 
 var  db   = require('node-any-jdbc');
@@ -142,10 +134,7 @@ var  db   = require('node-any-jdbc');
 cogfig = {
   libpath: './config/drivers/oracle/ojdbc7.jar',
   drivername: 'oracle.jdbc.driver.OracleDriver',
-  url:  'jdbc:oracle:thin:QA/password123@//abc-test.corp.int:1527/stage1',
-  // uri: 'jdbc:oracle:thin://abc-test.corp.int:1527/stage1',
-  // user: 'QA',
-  // password: 'password123',
+  url:  'jdbc:oracle:thin:QA/password123@//abc-test.corp.int:1527/stage1'
 };
 
 //example of sample select query to fetch the result set
@@ -155,37 +144,37 @@ db.execute(cogfig, sql, function(results){
   console.log(results);
 });
 
+```
 For trouble shooting and more information, please visit `node-any-jdbc` module which can be [found here](https://www.npmjs.com/package/node-any-jdbc)
 
-Note: `node-any-jdbc` is NOT packaged under this project. If you need, you can install it and start using it right away. You can also find sample examples under /util-examples/database-example.js
-
-```
+Note: `node-any-jdbc` is NOT packaged under this project. If you need, you can install it and start using it right away. You can also find sample examples under `/util-examples/database-example.js`
 
 ## Working with MS-Excel
 
 You can user MS-Excel and store your test data, expected data in an excel sheet. Tou can keeep any number of excel sheets you want and use below common methods to puull data from youe sheet to be use as part of testing.  Please note it only support .xlsx file format. For more information refer to the `common-utilities.js` and `util-examples`
 
-```
+```javascript
 //example of pulling data from MS-Excel
 
 var  utl  = require('../utilities/common-utilities.js');
 utl.excel_getTableRow(__dirname+'/sample.xlsx', 'info', 'emp_id', '101', function(results){
   // returns only one row based on the condition
-  //console.log(results);
-  //console.log(results.emp_id);
+  console.log(results);
+  console.log(results.emp_id);
 });
 
 utl.excel_getTableRows(__dirname+'/sample.xlsx', 'address', function(results){
   // returns all rows of the specified sheet
-  //console.log(results[1]);
+  console.log(results[1]);
   //then do what ever validation you to do withe results
 });
 
 utl.excel_getAllSheetData(__dirname+'/sample.xlsx', function(results){
   // returns all sheets data of a excel file
-  //console.log(results);
+  console.log(results);
   //then do what ever validation you to do withe results
 });
+
 ```
 
 ## Common utilities
