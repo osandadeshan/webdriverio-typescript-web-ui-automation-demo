@@ -8,9 +8,9 @@ This boilerplate code support Typescript, also provides sample utilities to read
 ## Installation
 This project is tested on **Node v18.0.0** and above.  While earlier versions of node may be compatible, but they have not been verified.
 
-`Node.JS:` Install  from the site - https://nodejs.org/en/  take the LTS version based on your Operating system. Please make sure you install NodeJS globally.
+* Node.JS: Install  from the site - https://nodejs.org/en/  take the LTS version based on your Operating system. Please make sure you install NodeJS globally.
 
-`JDK:` It is optional, install JDK and make sure class path is set properly. JAVA is require to start `Selenium Server` on your local environment nothing else.
+* JDK: It is optional, install JDK and make sure class path is set properly. JAVA is require to start `Selenium Server` on your local environment nothing else.
 
 ## Selenium Tests / Appium Tests
 
@@ -20,11 +20,11 @@ To run your test you must have Selenium / Appium server up and running to execut
 
 To execute the entire test suite on local development or cloud provider, you can use below
 
-Option 1: Local Environment `npm run test-local`.
+* Option 1: Local Environment `npm run test-local`.
 
-Option 2: You can also run in `SauceLabs` or  `BrowserStack` or `LambdaTest` using `npm run test-sauce` or `npm run test-browserstack` or `npm run test-browserstack`.
+* Option 2: You can also run in `SauceLabs` or  `BrowserStack` or `LambdaTest` using `npm run test-sauce` or `npm run test-browserstack` or `npm run test-browserstack`.
 
-Option 3: Mobile Device. To execute tests on mobile device use : `npm run test-mobile`.
+* Option 3: Mobile Device. To execute tests on mobile device use : `npm run test-mobile`.
 
 💡 Before running mobile tests, perform the requisite Appium setup. Refer [Appium Docs](http://appium.io/getting-started.html?lang=en)
 
@@ -44,7 +44,7 @@ Complete set of execution `logs` will be generated during the run time and can b
 
 WebdriverIO uses several different types of test reporters to communicate pass/failure.
 
-### 1. Allure
+### 1. Allure Reporter
 
 The Allure Reporter creates [Allure](https://docs.qameta.io/allure/) test reports which is an HTML generated website with all necessary information to debug your test results and take a look on error screenshots. Add allure to the reporters array in config file and define the output directory of the allure reports.  Please note, this has been added in wdio.shared.config.
 
@@ -52,9 +52,10 @@ To generate and view an Allure report inside your corp network or locally, run `
 
 ![ScreenShot](https://user-images.githubusercontent.com/9147189/263193450-74e9bf79-4e04-4b3b-ba09-8717e6c017a5.png)
 
-### 2. Spec
+### 2. Spec Reporter
 
-Test reporter, that prints detailed results to console.
+The Spec Reporter prints detailed results to console.
+![Screenshot](https://user-images.githubusercontent.com/9147189/263204618-9418ac96-513b-41c5-8aad-0c95dbe6227a.png)
 
 ## Develop automation scripts (for both desktop browser and mobile browser / app)
 
