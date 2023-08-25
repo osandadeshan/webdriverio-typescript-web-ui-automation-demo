@@ -50,7 +50,7 @@ The Allure Reporter creates [Allure](https://docs.qameta.io/allure/) test report
 
 To generate and view an Allure report inside your corp network or locally, run `npm run allure-report`. The Allure report is hosted on a `web server` and can be accessed through http://YourMachineIP:5050/ and also generated locally which can be found at `./allure-report/index.html`. A typical Allure report will look like this.
 
-![ScreenShot](https://user-images.githubusercontent.com/9147189/262856176-33926ee6-b89e-4a38-a68e-ed8f23394ee7.png)
+![ScreenShot](https://user-images.githubusercontent.com/9147189/263193450-74e9bf79-4e04-4b3b-ba09-8717e6c017a5.png)
 
 ### 2. Spec
 
@@ -64,7 +64,7 @@ Refer complete [WebdriverIO v8 API](https://webdriver.io/docs/api) methods to wr
 
 Sample tests are located in `*.specs.js` files in the `/test/specs/` directory. A typical test will look similar to this:
 ```
-//example (pls refer to pageobject class and spec files)
+//example (pls refer to page object classes and spec files)
 
 //a test using async mode//
 
@@ -86,7 +86,7 @@ An object called `Page` will be created with the prototype model or by ES6 class
 
 It is preferable to separate page objects into individual files that end with `.page.ts`.  These will require the basic `page.ts` prototype construct / abstract class and create new objects for each individual page.
 
-For more information on the implementation of `Page Object Design Pattern`, refer to the `/test/pageobjects` directory. A typical page class using ES6 syntax will look similar to this:
+For more information on the implementation of `Page Object Design Pattern`, refer to the `/test/page-objects` directory. A typical page class using ES6 syntax will look similar to this:
 
 💡 If you want to use ES5 syntax, refer to the sample.page.js under util-examples.
 

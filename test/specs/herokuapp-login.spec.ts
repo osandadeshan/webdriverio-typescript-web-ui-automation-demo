@@ -1,21 +1,27 @@
+import loginPage from '../page-objects/herokuapp-login.page.ts';
+import landingPage from '../page-objects/herokuapp-landing.page.ts';
+import assert from 'assert';
 
-import loginPage    from '../page-objects/herokuapp-login.page.ts';
-import landingPage  from '../page-objects/herokuapp-landing.page.ts';
-import assert       from 'assert';
+describe("Herokuapp Login Test", () => {
+  it("Verify that a user can login to the appliation with valid credentials", async () => {
+    await loginPage.open();
 
-/*
-	This is a BDD test using Mocha JavaScript framework
-*/
-
-describe('Test for herokuapp login page',  () =>  {
-  it('should allow user to login ', async () =>  {
-    await loginPage.open();     // navigating to login page
-    await loginPage.login('tomsmith', 'SuperSecretPassword!');    // entering user name, password and and submiting the page
+    await loginPage.login('tomsmith', 'SuperSecretPassword!');
+    
+    assert.equal(
+      await landingPage.getMessage(),
+      'Welcome to the Secure Area. When you are done click logout below.'
+    );
   });
 
-  it('should validate the message after login ', async () =>  {
-    assert.equal(await landingPage.getMessage(), "Welcome to the Secure Area. When you are done click logout below.");
-    //console.log(await landingPage.getMessage());
+  it("Verify that a user cannot login to the appliation with invalid credentials", async () => {
+    await loginPage.open();
 
+    await loginPage.login('tomsmith', 'SuperSecretPassword');
+    
+    assert.equal(
+      await loginPage.getLoginError(),
+      'Your password is invalid!\n×'
+    );
   });
 });

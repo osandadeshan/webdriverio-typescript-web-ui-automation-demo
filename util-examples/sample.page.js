@@ -3,28 +3,28 @@
 /** There are many ways you can create JavaScript classes `Object.create()` method is one of them Or even **/
 /** you can also create class based style classes and objects in JavaScript using ES6 syntax. below are few examples **/
 
-
 //using JavaScript native Object.create()
 
-function Page () {
+class Page {
+  constructor() {}
+  open(path) {
+    browser.url("/" + path); //eslint-disable-line prefer-template
+  }
 }
-
-Page.prototype.open = function (path) {
-    browser.url('/' + path); //eslint-disable-line prefer-template
-};
 
 module.exports = new Page();
 
 //Or, using ES6 class - similar to Java language:
 
-"use strict";
+("use strict");
 
 class Page {
-	constructor() {
-		this.title = 'My Page';  // just an example
-	}
-	open(path) {
-		browser.url('/' + path);
-	}
+  constructor() {
+    this.title = "My Page"; // just an example
+  }
+  open(path) {
+    browser.url("/" + path);
+  }
 }
+
 export default new Page();

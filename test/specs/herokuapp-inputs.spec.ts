@@ -1,14 +1,9 @@
+import inputsPage from '../page-objects/herokuapp-inputs.page.ts';
 
-import inputsPage  from '../page-objects/herokuapp-inputs.page.ts';
-import assert       from 'assert';
+describe("Herokuapp Inputs Page Test", () => {
+  it("Verify that the page heading should be 'Inputs'", async () => {
+    await inputsPage.open();
 
-/*
-	This is a BDD test using Mocha JavaScript framework
-*/
-
-describe('Test for herokuapp inputs page',  () =>  {
-  it('should show the heading as Inputs ', async () =>  {
-    await inputsPage.open();     // navigating to inputs page
-    assert.equal(await inputsPage.getHeading(), "Inputs");
+    expect(await inputsPage.getHeading()).toHaveText('Inputs');
   });
 });
